@@ -1,6 +1,7 @@
 /* main.js - cleaned & robust; bottom sheet on mobile; swipe-to-close */
 document.addEventListener('DOMContentLoaded', () => {
   const socket = (typeof io === 'function') ? io() : null;
+  const socket = io("https://visionmeet-f3e1.onrender.com");
   const pcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
   const urlParts = location.pathname.split('/').filter(Boolean);
@@ -343,3 +344,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initLocalStream();
 
 }); // DOMContentLoaded end
+
