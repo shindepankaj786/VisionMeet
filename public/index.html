@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VisionMeet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="img/png" href="/logo-top.png" />
+</head>
+<body>
+  <!-- Header -->
+  <header id="topbar">
+  <img src="/logo.png" alt="VisionMeet Logo" class="logo" />
+  </header>
+ <div id="roomInfo">Room Id: <span id="roomId"></span></div>
+  <!-- Main Content -->
+  <main id="main">
+    <!-- Video Grid -->
+    <section id="videos" aria-live="polite"></section>
+
+    <!-- Chat Sidebar / Drawer (hidden by default) -->
+    <aside id="side" aria-hidden="true">
+      <div class="chat-header">
+        <h2 class="chat-title">💬 Chat</h2>
+        <button id="closeChat" class="close-btn" aria-label="Close chat">✖</button>
+      </div>
+
+      <div id="chatWindow" role="log" aria-live="polite"></div>
+
+      <form id="chatForm">
+        <input id="chatInput" placeholder="Send a vibe..." autocomplete="off" />
+        <button type="submit" class="btn" aria-label="Send">➤</button>
+      </form>
+    </aside>
+  </main>
+
+  <!-- Backdrop (click to close drawer) -->
+  <div id="backdrop" class="hidden" aria-hidden="true"></div>
+
+  <!-- Floating Control Bar -->
+<div id="controlBar" role="toolbar" aria-label="Meeting controls">
+  <button id="muteBtn" class="btn control" title="Toggle Mic">🎤</button>
+  <button id="videoBtn" class="btn control" title="Toggle Video">📷</button>
+  <button id="shareBtn" class="btn control" title="Share Screen">🖥️</button>
+  <button id="copyBtn" class="btn control highlight" title="Copy Link">🔗</button>
+  <button id="chatToggle" class="btn control" title="Open Chat">💬</button>
+  <!-- 🚨 New leave button -->
+  <button id="leaveBtn" class="btn control danger" title="Leave Meeting">☎️</button>
+</div>
+
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>
+
