@@ -23,12 +23,55 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeChat = document.getElementById('closeChat');
   const backdrop = document.getElementById('backdrop');
 
-  if (roomIdEl) roomIdEl.textContent = roomId || 'none';
-  if (!roomId) {
-    document.body.innerHTML = '<p style="padding:20px">No room ID. Go to <a href="/room">/room</a> to create a room.</p>';
-    console.error('No room id in URL');
-    return;
-  }
+ if (roomIdEl) roomIdEl.textContent = roomId || 'none';
+
+if (!roomId) {
+  document.body.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;background:rgba(76, 77, 77, 1);">
+      <div style="background: hsl(210, 56%, 74%);padding:30px;border-radius:12px;box-shadow:0 4px 12px rgba(0, 17, 255, 1);text-align:center;max-width:400px;">
+        <h2 style="margin-bottom:15px;color:#333;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <img src="/logo-top.png" 
+       alt="VisionMeet Logo" 
+       width="40" height="40" 
+       style="vertical-align:middle;" />
+      Welcome to VisionMeet
+      </h2>
+
+        
+        <button id="createRoomBtn" style="display:block;width:100%;background:rgba(71,71,73,1);color:white;
+          padding:10px 18px;margin-bottom:10px;border:none;border-radius:8px;font-weight:600;cursor:pointer;">
+          ✚ CREATE ROOM
+        </button>
+
+        <input id="joinInput" type="text" placeholder="Enter Room ID" 
+          style="width:100%;padding:10px;border-radius:8px;border:1px solid #999;margin-bottom:10px;text-align:center;" />
+
+        <button id="joinRoomBtn" style="display:block;width:100%;background:rgba(71,71,73,1);color:white;
+          padding:10px 18px;border:none;border-radius:8px;font-weight:600;cursor:pointer;">
+          🔗 JOIN ROOM
+        </button>
+      </div>
+    </div>
+  `;
+
+  // JS actions
+  document.getElementById('createRoomBtn').addEventListener('click', () => {
+    const newRoomId = Math.random().toString(36).substring(2, 10);
+    window.location.href = `/room?room=${newRoomId}`;
+  });
+
+  document.getElementById('joinRoomBtn').addEventListener('click', () => {
+    const input = document.getElementById('joinInput').value.trim();
+    if (input) {
+      window.location.href = `/room?room=${input}`;
+    } else {
+      alert('⚠️ Please enter a room ID to join.');
+    }
+  });
+
+  console.error('No room id in URL');
+  return;
+}
 
   let localStream = null;
   let audioEnabled = true;
@@ -343,5 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLocalStream();
 
 }); // DOMContentLoaded end
+
 
 
