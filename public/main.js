@@ -42,14 +42,6 @@ if (!roomId) {
           padding:10px 18px;margin-bottom:10px;border:none;border-radius:8px;font-weight:600;cursor:pointer;">
           ✚ CREATE ROOM
         </button>
-
-        <input id="joinInput" type="text" placeholder="Enter Room ID" 
-          style="width:100%;padding:10px;border-radius:8px;border:1px solid #999;margin-bottom:10px;text-align:center;" />
-
-        <button id="joinRoomBtn" style="display:block;width:100%;background:rgba(71,71,73,1);color:white;
-          padding:10px 18px;border:none;border-radius:8px;font-weight:600;cursor:pointer;">
-          🔗 JOIN ROOM
-        </button>
       </div>
     </div>
   `;
@@ -60,18 +52,9 @@ if (!roomId) {
     window.location.href = `/room?room=${newRoomId}`;
   });
 
-  document.getElementById('joinRoomBtn').addEventListener('click', () => {
-    const input = document.getElementById('joinInput').value.trim();
-    if (input) {
-      window.location.href = `/room?room=${input}`;
-    } else {
-      alert('⚠️ Please enter a room ID to join.');
-    }
-  });
-
-  console.error('No room id in URL');
   return;
 }
+
 
   let localStream = null;
   let audioEnabled = true;
@@ -386,6 +369,7 @@ if (!roomId) {
   initLocalStream();
 
 }); // DOMContentLoaded end
+
 
 
 
