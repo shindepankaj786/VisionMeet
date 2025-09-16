@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="img/png" href="/logo-top.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <!-- Header -->
@@ -40,16 +41,33 @@
   <!-- Backdrop (click to close drawer) -->
   <div id="backdrop" class="hidden" aria-hidden="true"></div>
 
-  <!-- Floating Control Bar -->
+<!-- Floating Control Bar -->
 <div id="controlBar" role="toolbar" aria-label="Meeting controls">
-  <button id="muteBtn" class="btn control" title="Toggle Mic">🎤</button>
-  <button id="videoBtn" class="btn control" title="Toggle Video">📷</button>
-  <button id="shareBtn" class="btn control" title="Share Screen">🖥️</button>
-  <button id="copyBtn" class="btn control highlight" title="Copy Link">🔗</button>
-  <button id="chatToggle" class="btn control" title="Open Chat">💬</button>
-  <!-- 🚨 New leave button -->
-  <button id="leaveBtn" class="btn control danger" title="Leave Meeting">☎️</button>
+  <button id="muteBtn" class="btn control" title="Toggle Mic">
+    <i class="fa-solid fa-microphone"></i>
+  </button>
+
+  <button id="videoBtn" class="btn control" title="Toggle Video">
+    <i class="fa-solid fa-video"></i>
+  </button>
+
+  <button id="shareBtn" class="btn control" title="Share Screen">
+    <i class="fa-solid fa-desktop"></i>
+  </button>
+
+  <button id="copyBtn" class="btn control highlight" title="Copy Link">
+    <i class="fa-solid fa-link"></i>
+  </button>
+
+  <button id="chatToggle" class="btn control" title="Open Chat">
+    <i class="fa-solid fa-comment-dots"></i>
+  </button>
+
+  <button id="leaveBtn" class="btn control danger" title="Leave Meeting">
+    <i class="fa-solid fa-phone-slash"></i>
+  </button>
 </div>
+
 
 
   <!-- Scripts -->
@@ -57,4 +75,5 @@
   <script src="/main.js"></script>
 </body>
 </html>
+
 
