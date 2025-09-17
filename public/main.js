@@ -1,4 +1,4 @@
-/* main.js - cleaned & robust; bottom sheet on mobile; swipe-to-close */
+
 document.addEventListener('DOMContentLoaded', () => {
   const socket = (typeof io === 'function') ? io() : null;
   const pcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const videoBtn = document.getElementById('videoBtn');
   const shareBtn = document.getElementById('shareBtn');
   const copyBtn = document.getElementById('copyBtn');
-  const leaveBtn = document.getElementById('leaveBtn'); // 👈 added leave button hook
+  const leaveBtn = document.getElementById('leaveBtn');
 
   const chatToggle = document.getElementById('chatToggle');
   const sidePanel = document.getElementById('side');
@@ -46,7 +46,6 @@ if (!roomId) {
     </div>
   `;
 
-  // JS actions
   document.getElementById('createRoomBtn').addEventListener('click', () => {
     const newRoomId = Math.random().toString(36).substring(2, 10);
     window.location.href = `/room?room=${newRoomId}`;
@@ -164,7 +163,6 @@ if (!roomId) {
     delete remoteVideos[socketId];
   }
 
-  /* Socket handlers */
   if (socket) {
     socket.on('connect', async () => {
       await initLocalStream();
@@ -202,7 +200,6 @@ if (!roomId) {
     });
   }
 
-  /* Chat logic */
   chatForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const v = chatInput?.value?.trim();
@@ -229,7 +226,6 @@ if (!roomId) {
   }
   function escapeHtml(s) { if (!s) return ''; return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c])); }
 
-  /* Controls */
   muteBtn?.addEventListener('click', () => {
     if (!localStream) return;
     audioEnabled = !audioEnabled;
@@ -274,35 +270,33 @@ if (!roomId) {
     }
   });
 
-  /* Leave / End Meeting */
   leaveBtn?.addEventListener('click', () => {
-    // Close all peers
+
     Object.values(peers).forEach(pc => {
       try { pc.close(); } catch(e) {}
     });
 
-    // Stop local media
+
     if (localStream) {
       localStream.getTracks().forEach(track => track.stop());
     }
 
-    // Disconnect socket
+
     if (socket) {
       socket.disconnect();
     }
 
-    // Clear UI
+
     if (localVideoContainer) {
       localVideoContainer.innerHTML = '<p style="text-align:center;margin-top:20px;">You have left the meeting.</p>';
     }
 
-    // Redirect after short delay
+
     setTimeout(() => {
-      window.location.href = "/"; // change if you have a custom goodbye page
+      window.location.href = "/"; 
     }, 1500);
   });
 
-  /* Chat drawer: open/close functions */
   function openChat() {
     if (!sidePanel) return;
     sidePanel.classList.add('open');
@@ -323,10 +317,8 @@ if (!roomId) {
   closeChat?.addEventListener('click', closeChatFn);
   backdrop?.addEventListener('click', closeChatFn);
 
-  // ESC closes drawer
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeChatFn(); });
 
-  /* Swipe-to-close on mobile */
   if (sidePanel) {
     let startY = 0, currentY = 0, touching = false;
 
@@ -365,10 +357,10 @@ if (!roomId) {
     }, { passive: true });
   }
 
-  // init preview early
   initLocalStream();
 
-}); // DOMContentLoaded end
+});
+
 
 
 
