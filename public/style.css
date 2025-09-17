@@ -1,4 +1,4 @@
-/* Reset & Base */
+
 * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
 :root{
   --bg1:#4a4c52; --bg2:#282829; --muted:#323436;
@@ -14,7 +14,6 @@ body {
   overflow: hidden;
 }
 
-/* Header */
 #topbar {
   padding: 14px 20px;
   text-align: center;
@@ -24,10 +23,8 @@ body {
   font-size: 1rem;
 }
 
-/* Main Layout */
 #main { display: flex; flex: 1; overflow: hidden; }
 
-/* Video Grid */
 #videos {
   flex: 1;
   display: grid;
@@ -51,9 +48,8 @@ video {
 }
 video:hover { transform: scale(1.02); }
 
-/* Chat Sidebar / Drawer */
 #side {
-  /* default: off-screen to the right (closed) - desktop behavior */
+
   position: fixed;
   top: 0;
   right: 0;
@@ -75,7 +71,6 @@ video:hover { transform: scale(1.02); }
 .close-btn { background: transparent; border: none; color: #fff; font-size:1.2rem; cursor:pointer; transition: transform .15s ease; }
 .close-btn:hover { transform: scale(1.14); color: #f87171; }
 
-/* Chat Window */
 #chatWindow {
   flex: 1;
   background: rgba(6,18,36,0.6);
@@ -90,11 +85,9 @@ video:hover { transform: scale(1.02); }
   background: linear-gradient(180deg,var(--accent1),var(--accent2)); border-radius:6px;
 }
 
-/* Chat messages */
 .message { margin-bottom:10px; padding:10px; border-radius:12px; background: rgba(168,85,247,0.08);
   font-size:0.9rem; line-height:1.3; border-left:4px solid var(--accent1); }
 
-/* Chat Form */
 #chatForm { display:flex; margin-top:10px; }
 #chatForm input {
   flex:1; padding:12px; border-radius:12px; border:0; margin-right:8px; background:#1e293b; color:#fff;
@@ -106,7 +99,6 @@ video:hover { transform: scale(1.02); }
 }
 #chatForm button:hover { transform: scale(1.08); background:#9333ea; }
 
-/* Floating Control Bar */
 #controlBar {
   position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
   display:flex; gap:12px; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(12px);
@@ -120,17 +112,14 @@ video:hover { transform: scale(1.02); }
 .highlight { background: linear-gradient(135deg,var(--accent2),var(--accent1)); }
 .highlight:hover { background: linear-gradient(135deg,#2563eb,#9333ea); }
 
-/* Video label */
 .local-label { position:relative; top:-34px; left:12px; background:rgba(0,0,0,0.55); padding:4px 8px; border-radius:8px;
   font-size:12px; font-weight:500; }
 
-/* Backdrop */
 #backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 39; display: none; opacity: 0; transition: opacity .25s ease; }
 #backdrop.show { display:block; opacity:1; }
 
-/* ===== Mobile: bottom sheet style ===== */
 @media (max-width: 768px) {
-  /* make chat a bottom sheet */
+
   #side {
     right: auto;
     left: 0;
@@ -142,18 +131,15 @@ video:hover { transform: scale(1.02); }
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(.22,.9,.32,1);
   }
-  /* open state for bottom sheet */
+
   #side.open { transform: translateY(0); }
 
-  /* video grid single column */
   #videos { grid-template-columns: repeat(auto-fit, minmax(100%,1fr)); padding-bottom: 120px; }
 
-  /* control bar slightly more compact */
   #controlBar { width: 95%; justify-content: space-around; padding:12px; border-radius:16px; bottom: 12px; }
   .btn.control { max-width:60px; }
 }
 
-/* small phones */
 @media (max-width:420px) {
   video { border-radius:12px; }
   #controlBar { padding:10px; gap:8px; }
@@ -176,11 +162,12 @@ video:hover { transform: scale(1.02); }
 header {
   background-color: hsl(210, 56%, 74%);
 }
-/* Danger (leave/end) button */
+
 .btn.control.danger {
-  background: #ef4444; /* red */
+  background: #ef4444;
 }
 .btn.control.danger:hover {
   background: #dc2626;
   transform: scale(1.12);
 }
+
