@@ -12,17 +12,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Header -->
   <header id="topbar">
   <img src="/logo.png" alt="VisionMeet Logo" class="logo" />
   </header>
  <div id="roomInfo">Room Id: <span id="roomId"></span></div>
-  <!-- Main Content -->
+  
   <main id="main">
-    <!-- Video Grid -->
+
     <section id="videos" aria-live="polite"></section>
 
-    <!-- Chat Sidebar / Drawer (hidden by default) -->
     <aside id="side" aria-hidden="true">
       <div class="chat-header">
         <h2 class="chat-title">💬 Chat</h2>
@@ -38,10 +36,8 @@
     </aside>
   </main>
 
-  <!-- Backdrop (click to close drawer) -->
   <div id="backdrop" class="hidden" aria-hidden="true"></div>
 
-<!-- Floating Control Bar -->
 <div id="controlBar" role="toolbar" aria-label="Meeting controls">
   <button id="muteBtn" class="btn control" title="Toggle Mic">
     <i class="fa-solid fa-microphone"></i>
@@ -69,11 +65,10 @@
 </div>
 
 
-
-  <!-- Scripts -->
   <script src="/socket.io/socket.io.js"></script>
   <script src="/main.js"></script>
 </body>
 </html>
+
 
 
